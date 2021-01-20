@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import AdminPage from "./components/AdminPage";
+import ProductsPage from "./components/ProductsPage";
+
+import GlobalState from "./contexts/GlobalState";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalState>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact component={ProductsPage} />
+          <Route path="/admin" component={AdminPage} />
+        </Switch>
+      </BrowserRouter>
+    </GlobalState>
   );
 }
 
