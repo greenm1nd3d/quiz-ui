@@ -11,7 +11,7 @@
 }
 
 .header {
-  background: #06c;
+  background: #8a1538;
   color: #fff;
   padding: 30px;
   text-align: center;
@@ -45,22 +45,27 @@
   position: relative;
   border: 1px solid #ccc;
   margin-bottom: 30px;
-  min-height: 300px;
+  min-height: 350px;
   padding: 15px;
   text-align: center;
 }
 
 .product img {
   cursor: pointer;
-  float: left;
   margin-right: 10px;
-  max-width: 80px;
+  max-height: 100px;
 }
 
-.product .description {
+.product .content {
   font-size: 14px;
+  height: 65px;
   margin: 30px 0 0 20px;
+  overflow: hidden;
   text-align: left;
+}
+
+.product .price {
+  font-weight: bold;
 }
 
 .bottom {
@@ -79,15 +84,19 @@
 }
 
 .add-to-cart {
-  background: #06c;
+  background: #8a1538;
   color: #fff;
   font-size: 13px;
   padding: 5px 10px;
   width: 100%;
 }
 
+.btn:hover {
+  color: #ffff00;
+}
+
 .remove-from-cart {
-  background: #c33;
+  background: #8a1538;
   color: #fff;
   font-size: 13px;
   padding: 5px 10px;
@@ -95,7 +104,7 @@
 }
 
 .edit-product, .add-product {
-  background: #06c;
+  background: #8a1538;
   color: #fff;
   font-size: 13px;
   padding: 5px 15px;
@@ -109,7 +118,7 @@
 }
 
 .top-menu {
-  background: #444;
+  background: #555;
   height: 4rem;
   margin-bottom: 30px;
   width: 100%;
@@ -147,7 +156,7 @@
 
 .top-menu a:hover, .top-menu a:active {
   background: white;
-  color: #06c;
+  color: #8a1538;
 }
 
 .cart {
@@ -177,7 +186,7 @@
 }
 
 .cart-total {
-  background: #06c;
+  background: #8a1538;
   color: #fff;
   font-weight: bold;
   padding: 10px 15px;
@@ -191,4 +200,30 @@
 .search-bar input[type="text"] {
   padding: 5px 10px;
   width: 100%;
+}
+
+.modal-content {
+  left: 50%;
+  margin-left: -25vw;
+  width: 50vw;
+}
+
+.modal-body .photo {
+  max-width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.p-5-10 {
+  padding: 5px 10px;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
+.error {
+  color: #f00;
 }
