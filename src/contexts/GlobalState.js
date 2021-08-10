@@ -1,46 +1,24 @@
-import React, { useState, useReducer, useEffect } from "react";
-import { productReducer, ADD_PRODUCT, REMOVE_PRODUCT } from "./reducers";
+import React, { useReducer } from "react";
+import { reducer, ADD_ANSWER } from "./reducers";
 
-import ProductContext from "./ProductContext";
+import QuizContext from "./QuizContext";
 
 function GlobalState(props) {
-    const [products, setProducts] = useState([]);
-    const [cartState, dispatch] = useReducer(productReducer, { cart: [], total: 0 });
+    const [answerState, dispatch] = useReducer(reducer, { answers: [] });
 
-    useEffect(() => {
-        fetch("https://www.farmersph.com/addons/demo/api/v1/products")
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data);
-            }
-        )
-    }, []);
-
-    /*const reloadProducts = products => {
-        dispatch({ type: RELOAD_PRODUCTS, products: products });
-    };*/
-
-    const addToCart = product => {
-        dispatch({ type: ADD_PRODUCT, product: product });
-    };
-
-    const removeFromCart = productId => {
-        dispatch({ type: REMOVE_PRODUCT, productId: productId });
+    function addAnswer(item) {
+        dispatch({ type: ADD_ANSWER, item: item });
     };
 
     return (
-        <ProductContext.Provider
+        <QuizContext.Provider
             value={{
-                products: products,
-                cart: cartState.cart,
-                total: cartState.total,
-                //reloadProducts: reloadProducts,
-                addToCart: addToCart,
-                removeFromCart: removeFromCart
+                answers: answerState.answers,
+                addAnswer: addAnswer
             }}
         >
             {props.children}
-        </ProductContext.Provider>
+        </QuizContext.Provider>
     );
 }
 

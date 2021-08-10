@@ -1,64 +1,31 @@
-export const ADD_PRODUCT = "ADD_PRODUCT";
-export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
-//export const RELOAD_PRODUCTS = "RELOAD_PRODUCTS";
-/*
-const reloadProducts = (products, state) => {
-    return { ...state, products: products }
-}
-*/
-const addToCart = (product, state) => {
-    const updatedCart = [...state.cart];
-    const updatedItemIndex = updatedCart.findIndex(
-        item => item.id === product.id
+export const ADD_ANSWER = "ADD_ANSWER";
+
+const addAnswer = (item, state) => {
+    const updatedAnswers = [...state.answers];
+
+    const updatedItemIndex = updatedAnswers.findIndex(
+        itm => itm.question_id === item.question_id
     );
 
     if (updatedItemIndex < 0) {
-        updatedCart.push({ ...product, quantity: 1 });
+        updatedAnswers.push({ ...item });
     } else {
         const updatedItem = {
-            ...updatedCart[updatedItemIndex]
+            ...updatedAnswers[updatedItemIndex]
         };
-        updatedItem.quantity++;
-        updatedCart[updatedItemIndex] = updatedItem;
+        updatedItem.answer = item.answer;
+        updatedAnswers[updatedItemIndex] = updatedItem;
     }
 
-    let totalPrice = 0;
-    totalPrice = updatedCart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    console.log("Answers Data", updatedAnswers);
 
-    return { ...state, cart: updatedCart, total: totalPrice };
+    return { ...state, answers: updatedAnswers };
 };
 
-const removeFromCart = (productId, state) => {
-    const updatedCart = [...state.cart];
-    const updatedItemIndex = updatedCart.findIndex(item => item.id === productId);
-
-    const updatedItem = {
-        ...updatedCart[updatedItemIndex]
-    };
-
-    updatedItem.quantity--;
-    if (updatedItem.quantity <= 0) {
-        updatedCart.splice(updatedItemIndex, 1);
-    } else {
-        updatedCart[updatedItemIndex] = updatedItem;
-    }
-
-    let totalPrice = 0;
-    totalPrice = updatedCart.reduce((total, item) => total + (item.price * item.quantity), 0);
-
-    return { ...state, cart: updatedCart, total: totalPrice };
-};
-
-export const productReducer = (state, action) => {
+export const reducer = (state, action) => {
     switch (action.type) {
-        case ADD_PRODUCT:
-            return addToCart(action.product, state);
-
-        case REMOVE_PRODUCT:
-            return removeFromCart(action.productId, state);
-        
-        //case RELOAD_PRODUCTS:
-        //    return reloadProducts(action.products, state);
+        case ADD_ANSWER:
+            return addAnswer(action.item, state);
 
         default:
             return state;

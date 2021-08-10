@@ -1,5 +1,5 @@
 {
-  "name": "acehw",
+  "name": "quizzes",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +16,8 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "sweetalert2": "^11.1.2",
+    "sweetalert2-react-content": "^4.1.1",
     "web-vitals": "^0.2.4",
     "yup": "^0.32.9"
   },
